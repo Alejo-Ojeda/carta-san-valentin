@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carta de San Valentín</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Fondo animado -->
+<div id="heart-background"></div>
+
+<!-- Pantalla Sobre -->
+<div id="envelope-container">
+  <img src="envelope.png" alt="Sobre" id="envelope">
+  <p>🤍 Carta para NAT 🤍</p>
+</div>
+
+<!-- Pantalla Carta -->
+<div id="letter-container">
+  <div class="letter-window" id="letterWindow">
+
+    <h1 id="letter-title">¿Quieres ser mi San Valentín?</h1>
+
+    <img src="cat_heart.gif" class="cat" id="letter-cat">
+
+    <div class="buttons" id="letter-buttons">
+      <img src="yes.png" class="btn yes-btn" alt="Sí">
+      <img src="no.png" class="btn no-btn" alt="No">
+    </div>
+
+    <p id="final-text" class="final-text">
+      📍 <strong>Ubicación:</strong> En mis pensamientos. <br>
+      ⏰ <strong>Hora:</strong> 7:00 PM. <br>
+      💌 ¡Lleva esa sonrisa que me encanta! El resto lo hacemos mágico juntos. ✨
+    </p>
+    <button id="restart-btn">Volver al inicio 💌</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
