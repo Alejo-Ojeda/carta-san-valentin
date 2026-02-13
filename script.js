@@ -1,146 +1,229 @@
-const envelope = document.getElementById("envelope-container");
-const letterContainer = document.getElementById("letter-container");
-const letterWindow = document.getElementById("letterWindow");
+document.addEventListener("DOMContentLoaded", () => {
 
-const yesBtn = document.querySelector(".yes-btn");
-const noBtn = document.querySelector(".no-btn");
+    const envelope = document.getElementById("envelope-container");
+    const letterContainer = document.getElementById("letter-container");
+    const letterWindow = document.getElementById("letterWindow");
 
-const title = document.getElementById("letter-title");
-const catImg = document.getElementById("letter-cat");
-const buttons = document.getElementById("letter-buttons");
-const finalText = document.getElementById("final-text");
-const restartBtn = document.getElementById("restart-btn");
+    const yesBtn = document.querySelector(".yes-btn");
+    const noBtn = document.querySelector(".no-btn");
 
-const heartContainer = document.getElementById("heart-background");
+    const title = document.getElementById("letter-title");
+    const catImg = document.getElementById("letter-cat");
+    const bgMusic = document.getElementById("bg-music");
+    const buttons = document.getElementById("letter-buttons");
+    const finalText = document.getElementById("final-text");
+    const restartBtn = document.getElementById("restart-btn");
 
-/* =========================
-   ABRIR CARTA
-========================= */
+    const heartContainer = document.getElementById("heart-background");
 
-envelope.addEventListener("click", () => {
-    envelope.style.display = "none";
-    letterContainer.style.display = "grid";
+    let yaAcepto = false;
+    let cartaAbierta = false;
 
-    setTimeout(() => {
-        letterWindow.classList.add("open");
-    }, 50);
-});
+    /* =========================
+       ABRIR CARTA + MÚSICA FADE
+    ========================= */
 
-/* =========================
-   BOTÓN NO (MENSAJES CURSIS RANDOM)
-========================= */
+    envelope.addEventListener("click", () => {
 
-const frasesNo = [
-    "Respuesta incorrecta... intenta con 'Sí' 😉",
-    "Error 404: Amor no encontrado 💔",
-    "Hmm... esa no era la respuesta correcta 😌",
-    "El botón correcto es el otro 😏",
-    "¿Seguro? Piénsalo otra vez 💕",
-    "Ese botón está defectuoso 😌",
-    "Intento fallido... prueba con 'Sí' 😳",
-    "Sistema bloqueado hasta que digas que sí 💘",
-    "No aceptamos negativas aquí 😌",
-    "Tu corazón quiso decir 'Sí' 🥺"
-];
+        if (cartaAbierta) return;
+        cartaAbierta = true;
 
-function mostrarMensajeNo() {
-    let mensaje = document.querySelector(".mensaje-error");
+        envelope.style.display = "none";
+        letterContainer.style.display = "grid";
 
-    // Si no existe lo creamos
-    if (!mensaje) {
-        mensaje = document.createElement("div");
-        mensaje.classList.add("mensaje-error");
-        document.body.appendChild(mensaje);
-    }
+        // Fade in elegante
+        bgMusic.volume = 0;
+        bgMusic.play().then(() => {
 
-    // Frase random
-    const randomIndex = Math.floor(Math.random() * frasesNo.length);
-    mensaje.textContent = frasesNo[randomIndex];
+            let fade = setInterval(() => {
+                if (bgMusic.volume < 0.4) {
+                    bgMusic.volume += 0.02;
+                } else {
+                    clearInterval(fade);
+                }
+            }, 200);
 
-    mensaje.classList.add("visible");
+        }).catch(err => {
+            console.log("Audio bloqueado por navegador:", err);
+        });
 
-    // ⏱ MÁS RÁPIDO
-    setTimeout(() => {
-        mensaje.classList.remove("visible");
-    }, 2000); // antes era más largo
-}
-
-noBtn.addEventListener("click", mostrarMensajeNo);
-
-
-/* =========================
-   BOTÓN SÍ
-========================= */
-
-yesBtn.addEventListener("click", () => {
-    title.textContent = "¡SÍÍÍÍ! 💖";
-    catImg.src = "cat_dance.gif";
-
-    letterWindow.classList.add("final");
-
-    buttons.style.display = "none";
-    finalText.style.display = "block";
-    restartBtn.style.display = "inline-block";
-});
-
-/* =========================
-   REINICIAR
-========================= */
-
-restartBtn.addEventListener("click", () => {
-    location.reload();
-});
-
-/* =========================
-   CORAZONES INTERACTIVOS (EXPLOSIÓN BONITA)
-========================= */
-
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-
-    const size = Math.random() * 20 + 15;
-    heart.style.width = size + "px";
-    heart.style.height = size + "px";
-    heart.style.left = Math.random() * 100 + "vw";
-
-    const duration = Math.random() * 4 + 6;
-    heart.style.animationDuration = duration + "s";
-
-    heartContainer.appendChild(heart);
-
-    heart.addEventListener("click", (e) => {
-        e.stopPropagation();
-        explodeHeart(heart);
+        setTimeout(() => {
+            letterWindow.classList.add("open");
+        }, 50);
     });
 
-    setTimeout(() => {
-        heart.remove();
-    }, duration * 1000);
-}
 
-function explodeHeart(heart) {
-    const rect = heart.getBoundingClientRect();
+    /* =========================
+       BOTÓN NO
+    ========================= */
 
-    for (let i = 0; i < 6; i++) {
-        const mini = document.createElement("div");
-        mini.classList.add("mini-heart");
+    const frasesNo = [
+        "Respuesta incorrecta... intenta con 'Sí' 😉",
+        "Error 404: Amor no encontrado 💔",
+        "Hmm... esa no era la respuesta correcta 😌",
+        "El botón correcto es el otro 😏",
+        "Tu corazón quiso decir 'Sí' 🥺",
+        "Negativo no es opción aquí 😌"
+    ];
 
-        mini.style.left = rect.left + rect.width / 2 + "px";
-        mini.style.top = rect.top + rect.height / 2 + "px";
+    function mostrarMensajeNo() {
 
-        const angle = Math.random() * Math.PI * 2;
-        const distance = Math.random() * 60 + 40;
+        let mensaje = document.querySelector(".mensaje-error");
 
-        mini.style.setProperty("--x", Math.cos(angle) * distance + "px");
-        mini.style.setProperty("--y", Math.sin(angle) * distance + "px");
+        if (!mensaje) {
+            mensaje = document.createElement("div");
+            mensaje.classList.add("mensaje-error");
+            document.body.appendChild(mensaje);
+        }
 
-        document.body.appendChild(mini);
+        // Reinicia animación si ya estaba visible
+        mensaje.classList.remove("visible");
+        void mensaje.offsetWidth; // fuerza reflow para reiniciar animación
 
-        setTimeout(() => mini.remove(), 800);
+        mensaje.textContent = frasesNo[Math.floor(Math.random() * frasesNo.length)];
+        mensaje.classList.add("visible");
+
+        setTimeout(() => {
+            mensaje.classList.remove("visible");
+        }, 2500);
     }
 
-    heart.remove();
-}
 
-setInterval(createHeart, 350);
+    noBtn.addEventListener("click", mostrarMensajeNo);
+
+
+    /* =========================
+       BOTÓN SÍ
+    ========================= */
+
+    yesBtn.addEventListener("click", () => {
+
+        if (yaAcepto) return;
+        yaAcepto = true;
+
+        title.textContent = "¡SÍÍÍÍ! 💖";
+        catImg.src = "cat_dance.gif";
+
+        letterWindow.classList.add("final");
+
+        buttons.style.display = "none";
+        finalText.style.display = "block";
+        restartBtn.style.display = "inline-block";
+
+        mostrarFrasesFondo();
+    });
+
+
+    function mostrarFrasesFondo() {
+
+        const frases = [
+            "Eres una persona increíble.",
+            "Tu forma de ver el mundo me encanta.",
+            "Tienes una luz que ilumina todo.",
+            "Me inspiras más de lo que imaginas.",
+            "Tu sonrisa cambia el ambiente.",
+            "Eres genuina, y eso te hace única.",
+            "Me siento afortunado de coincidir contigo.",
+            "Contigo todo se siente más bonito."
+        ];
+
+        const leftX = 6;
+        const rightX = 78;
+        const topStart = 15;
+        const spacing = 22;
+
+        let leftCount = 0;
+        let rightCount = 0;
+
+        frases.forEach((texto, index) => {
+
+            setTimeout(() => {
+
+                const frase = document.createElement("div");
+                frase.classList.add("frase-fondo");
+                frase.textContent = texto;
+
+                const isLeft = index % 2 === 0;
+
+                if (isLeft) {
+                    frase.style.left = leftX + "vw";
+                    frase.style.top = (topStart + leftCount * spacing) + "vh";
+                    leftCount++;
+                } else {
+                    frase.style.left = rightX + "vw";
+                    frase.style.top = (topStart + rightCount * spacing) + "vh";
+                    rightCount++;
+                }
+
+                document.body.appendChild(frase);
+
+            }, index * 1200);
+        });
+    }
+
+
+    /* =========================
+       REINICIAR
+    ========================= */
+
+    restartBtn.addEventListener("click", () => {
+        location.reload();
+    });
+
+
+    /* =========================
+       CORAZONES
+    ========================= */
+
+    function createHeart() {
+
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+
+        const size = Math.random() * 20 + 15;
+        heart.style.width = size + "px";
+        heart.style.height = size + "px";
+        heart.style.left = Math.random() * 100 + "vw";
+
+        const duration = Math.random() * 4 + 6;
+        heart.style.animationDuration = duration + "s";
+
+        heartContainer.appendChild(heart);
+
+        heart.addEventListener("click", (e) => {
+            e.stopPropagation();
+            explodeHeart(heart);
+        });
+
+        setTimeout(() => heart.remove(), duration * 1000);
+    }
+
+    function explodeHeart(heart) {
+
+        const rect = heart.getBoundingClientRect();
+
+        for (let i = 0; i < 6; i++) {
+
+            const mini = document.createElement("div");
+            mini.classList.add("mini-heart");
+
+            mini.style.left = rect.left + rect.width / 2 + "px";
+            mini.style.top = rect.top + rect.height / 2 + "px";
+
+            const angle = Math.random() * Math.PI * 2;
+            const distance = Math.random() * 60 + 40;
+
+            mini.style.setProperty("--x", Math.cos(angle) * distance + "px");
+            mini.style.setProperty("--y", Math.sin(angle) * distance + "px");
+
+            document.body.appendChild(mini);
+
+            setTimeout(() => mini.remove(), 800);
+        }
+
+        heart.remove();
+    }
+
+    setInterval(createHeart, 175);
+
+});
