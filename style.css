@@ -325,52 +325,38 @@ body {
    RESPONSIVE MOBILE FIX
 ========================= */
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
 
     body {
-        overflow-x: hidden;
-    }
-
-    #letter-container {
-        padding: 20px;
+        place-items: center;
     }
 
     .letter-window {
         width: 95vw;
         height: auto;
-        aspect-ratio: unset;
-        padding-top: 80px;
-        padding-bottom: 30px;
-    }
-
-    .letter-window:not(.final) {
-        padding-top: 90px;
-    }
-
-    .letter-window.final {
-        padding-top: 80px;
+        aspect-ratio: 4 / 3;
+        padding-top: 85px;   /* baja ligeramente */
+        padding-bottom: 25px;
+        transform: scale(1); /* evita sobreescalado */
     }
 
     #letter-title {
-        font-size: 18px;
         margin-top: 70px;
-        margin-bottom: 10px;
-        padding: 0 10px;
+        font-size: 16px;
     }
 
     .cat {
-        width: 130px;
+        width: 120px;
         margin-top: 20px;
     }
 
     .letter-window.final .cat {
-        width: 120px;
-        margin-top: 40px;
+        width: 110px;
+        margin-top: 60px;
     }
 
     .buttons {
         gap: 15px;
-        margin-top: 10px;
     }
 
     .btn {
@@ -378,15 +364,12 @@ body {
     }
 
     .final-text {
-        font-size: 16px;
-        padding: 16px;
-        margin-top: 20px;
+        font-size: 15px;
+        padding: 12px;
     }
 
     #restart-btn {
         width: 80%;
         font-size: 15px;
-        padding: 12px;
-        margin-top: 20px;
     }
 }
