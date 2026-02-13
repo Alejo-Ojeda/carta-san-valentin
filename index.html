@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -13,13 +14,17 @@
 </head>
 
 <body>
+<audio id="bg-music" loop>
+  <source src="olivia.mp3" type="audio/mpeg">
+</audio>
 
 <!-- Fondo animado -->
 <div id="heart-background"></div>
 
 <!-- Pantalla Sobre -->
 <div id="envelope-container">
-  <img src="envelope.png" alt="Sobre" id="envelope">
+  <p class="envelope-hint">✨ Toca el sobre ✨</p>
+  <img src="envelope.png" id="envelope">
   <p>♡ Carta para NAT ♡</p>
 </div>
 
@@ -27,7 +32,7 @@
 <div id="letter-container">
   <div class="letter-window" id="letterWindow">
 
-    <h1 id="letter-title">¿Quieres ser mi San Valentín?</h1>
+    <h1 id="letter-title">¿Señorita quiere ser mi San Valentín?</h1>
 
     <img src="cat_heart.gif" class="cat" id="letter-cat">
 
@@ -37,11 +42,12 @@
     </div>
 
     <p id="final-text" class="final-text">
-  📍 <strong>Ubicación:</strong> Ecuador - México, in my dreams. <br>
-  ⏰ <strong>Hora:</strong> 7:00 PM <br>
-  ¡Lleva esa sonrisa que me encanta!<br> 
-  <strong> We'll make the rest magical together.</strong> ✨
-</p>
+      📍 <strong>Ubicación:</strong> Ecuador - México, in my dreams. <br>
+      ⏰ <strong>Hora:</strong> 7:00 PM <br>
+      ¡Lleva esa sonrisa que me encanta!<br>
+      <strong>We'll make the rest magical together.</strong> ✨
+    </p>
+
     <button id="restart-btn">Volver al inicio 💌</button>
   </div>
 </div>
