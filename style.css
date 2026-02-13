@@ -320,3 +320,54 @@ body {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
 }
+
+/* =========================
+   RESPONSIVE MÓVIL
+========================= */
+
+@media (max-width: 600px) {
+
+    .letter-window {
+        width: 95vw;
+        height: auto;
+        aspect-ratio: unset;
+        padding-top: 90px;
+        padding-bottom: 30px;
+    }
+
+    #letter-title {
+        font-size: 18px;
+        margin-top: 60px;
+        margin-bottom: 10px;
+    }
+
+    .cat {
+        width: 140px;
+        margin-top: 15px;
+    }
+
+    .letter-window.final .cat {
+        width: 110px;
+        margin-top: 60px;
+    }
+
+    .buttons {
+        gap: 15px;
+    }
+
+    .btn {
+        width: 95px;
+    }
+
+    .final-text {
+        max-width: 90%;
+        font-size: 15px;
+        padding: 12px 14px;
+    }
+
+    #restart-btn {
+        font-size: 14px;
+        padding: 8px 14px;
+    }
+
+}
