@@ -322,52 +322,71 @@ body {
 }
 
 /* =========================
-   RESPONSIVE MÓVIL
+   RESPONSIVE MOBILE FIX
 ========================= */
 
 @media (max-width: 600px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    #letter-container {
+        padding: 20px;
+    }
 
     .letter-window {
         width: 95vw;
         height: auto;
         aspect-ratio: unset;
-        padding-top: 90px;
+        padding-top: 80px;
         padding-bottom: 30px;
+    }
+
+    .letter-window:not(.final) {
+        padding-top: 90px;
+    }
+
+    .letter-window.final {
+        padding-top: 80px;
     }
 
     #letter-title {
         font-size: 18px;
-        margin-top: 60px;
+        margin-top: 70px;
         margin-bottom: 10px;
+        padding: 0 10px;
     }
 
     .cat {
-        width: 140px;
-        margin-top: 15px;
+        width: 130px;
+        margin-top: 20px;
     }
 
     .letter-window.final .cat {
-        width: 110px;
-        margin-top: 60px;
+        width: 120px;
+        margin-top: 40px;
     }
 
     .buttons {
         gap: 15px;
+        margin-top: 10px;
     }
 
     .btn {
-        width: 95px;
+        width: 90px;
     }
 
     .final-text {
-        max-width: 90%;
-        font-size: 15px;
-        padding: 12px 14px;
+        font-size: 16px;
+        padding: 16px;
+        margin-top: 20px;
     }
 
     #restart-btn {
-        font-size: 14px;
-        padding: 8px 14px;
+        width: 80%;
+        font-size: 15px;
+        padding: 12px;
+        margin-top: 20px;
     }
-
 }
