@@ -121,14 +121,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if(level === 2){
             if(random < 0.08) type = "gold";
-            else if(random < 0.45) type = "bomb";   // más bombas
-            else if(random < 0.45) type = "gray";   // más oscuros
+            else if(random < 0.55) type = "bomb";   // más bombas
+            else if(random < 0.50) type = "gray";   // más oscuros
         }
 
         if(level === 3){
             if(random < 0.10) type = "gold";
-            else if(random < 0.45) type = "bomb";
-            else if(random < 0.55) type = "gray";
+            else if(random < 0.55) type = "bomb";
+            else if(random < 0.65) type = "gray";
         }
 
         if(type === "pink") obj.classList.add("pink");
@@ -286,11 +286,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if(lives < 3) lives = 3; // solo garantiza mínimo
         score = 0;
 
-        survivalTime = 7;
+        survivalTime = 10;
         updateUI();
 
         levelText.textContent = "Nivel 3 💀";
-        missionText.textContent = "Sobrevive 7 segundos";
+        missionText.textContent = "Sobrevive 10 segundos";
 
         resumeGame();
 
@@ -638,6 +638,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     setInterval(createHeart, 175);
+
+    /* =========================
+   CURSOR NEÓN ROSADO
+========================= */
+
+    const cursor = document.createElement("div");
+    cursor.classList.add("neon-cursor");
+    document.body.appendChild(cursor);
+
+    document.addEventListener("mousemove", (e) => {
+
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+
+        const trail = document.createElement("div");
+        trail.classList.add("cursor-trail");
+        trail.style.left = e.clientX + "px";
+        trail.style.top = e.clientY + "px";
+
+        document.body.appendChild(trail);
+
+        setTimeout(() => trail.remove(), 400);
+    });
+
 
 });
 
