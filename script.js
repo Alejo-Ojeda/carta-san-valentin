@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================= */
 
     function updateUI(){
-        scoreText.textContent = "Puntos: " + score;
+        scoreText.textContent = "Corazones: " + score;
         livesText.textContent = "Vidas: " + "❤️".repeat(lives);
     }
 
@@ -71,9 +71,14 @@ document.addEventListener("DOMContentLoaded", () => {
             startScreen.style.display = "none";
         }, 300);
 
+        // 🔥 MÚSICA EMPIEZA AQUÍ
+        bgMusic.volume = 0.4;
+        bgMusic.play().catch(()=>{});
+
         gameRunning = true;
         resumeGame();
     });
+
 
     function startGame(){
 
@@ -188,9 +193,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
             setTimeout(() => obj.remove(), 90);
 
-            if(type === "pink") score++;
-            if(type === "gold" && lives < 10) lives++;
-            if(type === "gray" || type === "bomb") lives--;
+            if(type === "pink"){
+                score++;
+            }
+
+            if(type === "gold" && lives < 10){
+                lives++;
+            }
+
+            if(type === "gray"){
+                lives--;
+            }
+
+            if(type === "bomb"){
+                lives--;
+
+                const rect = obj.getBoundingClientRect();
+
+                explodeBombEffect(
+                    rect.left + rect.width / 2,
+                    rect.top + rect.height / 2
+                );
+            }
 
             updateUI();
 
@@ -262,11 +286,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if(lives < 3) lives = 3; // solo garantiza mínimo
         score = 0;
 
-        survivalTime = 8;
+        survivalTime = 7;
         updateUI();
 
         levelText.textContent = "Nivel 3 💀";
-        missionText.textContent = "Sobrevive 8 segundos";
+        missionText.textContent = "Sobrevive 7 segundos";
 
         resumeGame();
 
@@ -616,3 +640,16 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(createHeart, 175);
 
 });
+
+function explodeBombEffect(x, y){
+
+    const explosion = document.createElement("div");
+    explosion.classList.add("bomb-explosion");
+
+    explosion.style.left = x + "px";
+    explosion.style.top = y + "px";
+
+    document.body.appendChild(explosion);
+
+    setTimeout(() => explosion.remove(), 500);
+}
