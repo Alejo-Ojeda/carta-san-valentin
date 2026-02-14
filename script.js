@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
         lives = 3;
 
         levelText.textContent = "Nivel 1 💖";
-        missionText.textContent = "Explota 7 corazones rosas";
+        missionText.textContent = "Captura 7 corazones rosas";
 
         updateUI();
         resumeGame();
@@ -331,7 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <h1>💖 VICTORIA TOTAL 💖</h1>
             <p>Has desbloqueado el nivel más importante ✨</p>
             <div class="victory-hearts">❤️ ❤️ ❤️</div>
-            <button id="final-claim-btn">RECLAMAR MI PREMIO ✨</button>
+            <button id="final-claim-btn">RECLAMA TU PREMIO ✨</button>
         </div>
     `;
 
