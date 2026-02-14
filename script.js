@@ -115,20 +115,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if(level === 1){
             if(random < 0.05) type = "gold";
-            else if(random < 0.10) type = "bomb";
-            else if(random < 0.20) type = "gray";
+            else if(random < 0.20) type = "bomb";
+            else if(random < 0.35) type = "gray";
         }
 
         if(level === 2){
             if(random < 0.08) type = "gold";
-            else if(random < 0.20) type = "bomb";   // más bombas
+            else if(random < 0.30) type = "bomb";   // más bombas
             else if(random < 0.45) type = "gray";   // más oscuros
         }
 
         if(level === 3){
             if(random < 0.10) type = "gold";
-            else if(random < 0.16) type = "bomb";
-            else if(random < 0.28) type = "gray";
+            else if(random < 0.40) type = "bomb";
+            else if(random < 0.55) type = "gray";
         }
 
         if(type === "pink") obj.classList.add("pink");
@@ -149,9 +149,9 @@ document.addEventListener("DOMContentLoaded", () => {
         let position = 0;
         let speed;
 
-        if(level === 1) speed = 1.6;
-        if(level === 2) speed = 2.1;   // un poco más difícil
-        if(level === 3) speed = 1.8;   // menos caótico que antes
+        if(level === 1) speed = 1.8;
+        if(level === 2) speed = 2.0;
+        if(level === 3) speed = 2.4;
 
         let alive = true;
 
@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 startSurvival();
             }
 
-        }, 2000);
+        }, 2600);
     }
 
 
@@ -292,7 +292,10 @@ document.addEventListener("DOMContentLoaded", () => {
         levelText.textContent = "Nivel 3 💀";
         missionText.textContent = "Sobrevive 7 segundos";
 
-        resumeGame();
+        setTimeout(() => {
+            resumeGame();
+        }, 1000);
+
 
         survivalTimer = setInterval(() => {
 
@@ -364,7 +367,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if(level === 1) spawnRate = 1100;  // más espacio entre corazones
         if(level === 2) spawnRate = 900;
-        if(level === 3) spawnRate = 700;
+        if(level === 3) spawnRate = 600;
 
         gameInterval = setInterval(createObject, spawnRate);
     }
