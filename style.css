@@ -470,3 +470,298 @@ body {
     to { opacity: 1; }
 }
 
+/* =========================
+   MINI JUEGO PRO
+========================= */
+
+#game-container {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, #140014 0%, #000000 70%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+}
+
+.game-ui {
+    position: relative;
+    width: 380px;
+    padding: 35px;
+    border-radius: 25px;
+    background: linear-gradient(145deg, rgba(80,0,40,0.9), rgba(30,0,20,0.95));
+    border: 2px solid rgba(255,105,180,0.4);
+    box-shadow: 0 0 30px rgba(255,105,180,0.5);
+    color: white;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+
+#score {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-weight: bold;
+}
+
+#lives {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-weight: bold;
+}
+
+
+#game-area {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
+}
+
+.game-heart {
+    position: absolute;
+    width: 38px;      /* tamaño más bonito */
+    height: 38px;
+    transform: rotate(45deg);
+    cursor: pointer;
+    bottom: 0;
+    transition: transform 0.1s ease;
+}
+
+.game-heart::before,
+.game-heart::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.game-heart::before { top: -50%; left: 0; }
+.game-heart::after { left: -50%; top: 0; }
+
+.pink { background: #ff2d75; }
+.pink::before, .pink::after { background: #ff2d75; }
+
+.gray {
+    background: linear-gradient(145deg, #444, #222);
+    box-shadow: 0 0 8px rgba(255,255,255,0.15);
+}
+
+.gray::before,
+.gray::after {
+    background: linear-gradient(145deg, #444, #222);
+}
+
+
+.gold { background: gold; }
+.gold::before, .gold::after { background: gold; }
+
+.bomb {
+    background: radial-gradient(circle at 30% 30%, #333, #000);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;   /* MÁS GRANDE */
+    box-shadow: 0 0 12px red;
+}
+
+
+
+/* Banner nivel */
+
+#level-banner {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    color: #ff2d75;
+    font-size: 40px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    text-shadow: 0 0 20px #ff2d75;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Combo flash */
+
+.combo-flash {
+    background: #1a001f !important;
+}
+
+/* Botón premio */
+
+#claim-btn {
+    margin-top: 20px;
+    padding: 14px 25px;
+    font-size: 18px;
+    background: gold;
+    color: black;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    animation: pulse 1s infinite;
+}
+
+#claim-btn:hover {
+    transform: scale(1.1);
+}
+
+/* =========================
+   START SCREEN PRO
+========================= */
+
+#start-screen {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, #140014 0%, #000000 70%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    color: white;
+    text-align: center;
+    transition: 0.4s ease;
+}
+
+#start-screen h1 {
+    font-size: 48px;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px #ff2d75, 0 0 30px #ff2d75;
+    animation: glowTitle 1.5s infinite alternate;
+}
+
+#start-screen p {
+    opacity: 0.85;
+    margin-bottom: 30px;
+    font-size: 22px;   /* antes 16px */
+    letter-spacing: 1px;
+}
+
+
+#start-btn {
+    padding: 18px 50px;
+    font-size: 20px;
+    font-family: "Pixelify Sans", sans-serif;
+    background: linear-gradient(45deg, #ff2d75, #ff0066);
+    border: 2px solid white;
+    border-radius: 14px;
+    color: white;
+    cursor: pointer;
+    transition: 0.25s ease;
+    box-shadow: 0 0 15px #ff2d75;
+}
+
+#start-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #ff2d75, 0 0 40px #ff2d75;
+}
+
+@keyframes glowTitle {
+    from { text-shadow: 0 0 10px #ff2d75; }
+    to { text-shadow: 0 0 25px #ff2d75, 0 0 50px #ff2d75; }
+}
+
+#level-banner {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    color: #ff2d75;
+    font-size: 42px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    text-shadow: 0 0 25px #ff2d75;
+}
+
+
+.victory-screen-full{
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, #1a0015 0%, #000 70%);
+    z-index: 9999;
+    animation: fadeVictory 0.6s ease;
+}
+
+.victory-card{
+    width: 480px;
+    max-width: 90%;
+    padding: 60px 50px;
+    border-radius: 30px;
+    background: linear-gradient(145deg, #4b001f, #2a0014);
+    border: 2px solid rgba(255,105,180,0.6);
+    box-shadow:
+            0 0 50px rgba(255,45,117,0.7),
+            0 0 100px rgba(255,45,117,0.4);
+    text-align: center;
+}
+
+.victory-card h1{
+    font-size: 38px;
+    margin-bottom: 25px;
+    color: #ff8ac6;
+    text-shadow: 0 0 25px #ff2d75;
+}
+
+.victory-card p{
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+.victory-hearts{
+    font-size: 32px;
+    margin-bottom: 35px;
+    animation: pulseHearts 1.2s infinite alternate;
+}
+
+@keyframes pulseHearts{
+    from { transform: scale(1); }
+    to { transform: scale(1.15); }
+}
+@keyframes fadeVictory{
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+#final-claim-btn{
+    padding: 18px 55px;
+    font-size: 20px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-family: "Pixelify Sans", sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background: linear-gradient(45deg, #ffd700, #ffae00);
+    color: #000;
+    box-shadow:
+            0 0 20px #ffd700,
+            0 0 50px #ffcc00;
+    transition: 0.3s ease;
+}
+
+#final-claim-btn:hover{
+    transform: scale(1.15);
+    box-shadow:
+            0 0 35px #ffd700,
+            0 0 80px #ffcc00;
+}
+
