@@ -6,11 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Carta de San Valentín</title>
 
-  <link rel="preload" as="image" href="envelope.png">
-  <link rel="preload" as="image" href="window.png">
-  <link rel="preload" as="image" href="cat_heart.gif">
-  <link rel="preload" as="image" href="cat_dance.gif">
-
   <link rel="stylesheet" href="style.css" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,15 +14,41 @@
 </head>
 
 <body>
-<audio id="bg-music" loop preload="auto">
+<audio id="bg-music" loop>
   <source src="olivia.mp3" type="audio/mpeg">
 </audio>
 
 <!-- Fondo animado -->
 <div id="heart-background"></div>
 
+<!-- MINI JUEGO -->
+<div id="game-container">
+
+  <div id="start-screen">
+    <h1>💖 MINI GAME 💖</h1>
+    <p>Demuestra que lo buena que eres 🤗</p>
+    <button id="start-btn">START</button>
+  </div>
+
+  <div class="game-ui">
+    <h2 id="level-text">Nivel 1 💖</h2>
+    <p id="mission-text">Explota 7 corazones rosas</p>
+    <p id="score">Corazones: 0</p>
+    <p id="lives">Vidas: ❤️❤️❤️</p>
+    <p id="combo"></p>
+  </div>
+
+  <div id="game-area"></div>
+
+  <!-- Botón que aparece solo al ganar -->
+  <button id="claim-btn" style="display:none;">
+    RECLAMAR MI PREMIO ✨
+  </button>
+
+</div>
+
 <!-- Pantalla Sobre -->
-<div id="envelope-container">
+<div id="envelope-container" style="display:none;">
   <p class="envelope-hint">✨ Toca el sobre ✨</p>
   <img src="envelope.png" id="envelope">
   <p>♡ Carta para NAT ♡</p>
@@ -37,7 +58,7 @@
 <div id="letter-container">
   <div class="letter-window" id="letterWindow">
 
-    <h1 id="letter-title">¿Señorita quiere ser mi San Valentín?</h1>
+    <h1 id="letter-title">¿Princesa quiere ser mi San Valentín?</h1>
 
     <img src="cat_heart.gif" class="cat" id="letter-cat">
 
@@ -47,7 +68,7 @@
     </div>
 
     <p id="final-text" class="final-text">
-      📍 <strong>Ubicación:</strong> Ecuador - México, in my dreams. <br>
+      📍 <strong>Ubicación:</strong> Ecuador - México, en OF. <br>
       ⏰ <strong>Hora:</strong> 7:00 PM <br>
       ¡Lleva esa sonrisa que me encanta!<br>
       <strong>We'll make the rest magical together.</strong> ✨
