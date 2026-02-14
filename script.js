@@ -121,13 +121,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if(level === 2){
             if(random < 0.08) type = "gold";
-            else if(random < 0.30) type = "bomb";   // más bombas
+            else if(random < 0.45) type = "bomb";   // más bombas
             else if(random < 0.45) type = "gray";   // más oscuros
         }
 
         if(level === 3){
             if(random < 0.10) type = "gold";
-            else if(random < 0.40) type = "bomb";
+            else if(random < 0.45) type = "bomb";
             else if(random < 0.55) type = "gray";
         }
 
@@ -292,10 +292,7 @@ document.addEventListener("DOMContentLoaded", () => {
         levelText.textContent = "Nivel 3 💀";
         missionText.textContent = "Sobrevive 7 segundos";
 
-        setTimeout(() => {
-            resumeGame();
-        }, 1000);
-
+        resumeGame();
 
         survivalTimer = setInterval(() => {
 
