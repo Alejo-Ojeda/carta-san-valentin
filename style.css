@@ -513,6 +513,12 @@ body {
     font-weight: bold;
 }
 
+#mission-text{
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
 
 #game-area {
     position: relative;
