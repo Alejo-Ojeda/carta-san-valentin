@@ -514,7 +514,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (yaAcepto) return;
         yaAcepto = true;
 
-        title.textContent = "¡SÍÍÍÍ! 💖";
+        title.textContent = "¡SIUUU! 💖";
         catImg.src = "cat_dance.gif";
 
         letterWindow.classList.add("final");
