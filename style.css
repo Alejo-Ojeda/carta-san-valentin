@@ -798,3 +798,46 @@ body {
         opacity: 0;
     }
 }
+
+
+/* Ocultar cursor real */
+body {
+    cursor: none;
+}
+
+/* Cursor principal */
+.neon-cursor {
+    position: fixed;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle, #ff2d75 0%, #ff2d75 40%, transparent 70%);
+    box-shadow:
+            0 0 8px #ff2d75,
+            0 0 18px #ff2d75,
+            0 0 35px #ff2d75;
+    transform: translate(-50%, -50%);
+    z-index: 99999;
+}
+
+/* Estela */
+.cursor-trail {
+    position: fixed;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: rgba(255, 45, 117, 0.6);
+    box-shadow: 0 0 10px #ff2d75;
+    transform: translate(-50%, -50%);
+    animation: fadeTrail 0.4s linear forwards;
+    z-index: 99998;
+}
+
+@keyframes fadeTrail {
+    to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.4);
+    }
+}
