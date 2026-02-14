@@ -472,7 +472,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const frasesNo = [
         "Respuesta incorrecta... intenta con 'Sí' 😉",
-        "Error 404: Amor no encontrado 💔",
+        "Error 404: Era la otra respuesta 💔",
         "Hmm... esa no era la respuesta correcta 😌",
         "El botón correcto es el otro 😏",
         "Tu corazón quiso decir 'Sí' 🥺",
@@ -498,7 +498,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(() => {
             mensaje.classList.remove("visible");
-        }, 2500);
+        }, 2700);
     }
 
 
