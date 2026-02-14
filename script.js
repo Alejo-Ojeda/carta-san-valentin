@@ -122,12 +122,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if(level === 2){
             if(random < 0.08) type = "gold";
             else if(random < 0.55) type = "bomb";   // más bombas
-            else if(random < 0.50) type = "gray";   // más oscuros
+            else if(random < 0.55) type = "gray";   // más oscuros
         }
 
         if(level === 3){
             if(random < 0.10) type = "gold";
-            else if(random < 0.55) type = "bomb";
+            else if(random < 0.60) type = "bomb";
             else if(random < 0.65) type = "gray";
         }
 
@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if(level === 1) speed = 1.8;
         if(level === 2) speed = 2.0;
-        if(level === 3) speed = 2.4;
+        if(level === 3) speed = 2.3;
 
         let alive = true;
 
