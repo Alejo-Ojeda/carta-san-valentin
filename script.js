@@ -456,7 +456,7 @@ document.addEventListener("DOMContentLoaded", () => {
         gameContainer.style.display = "none";
         envelope.style.display = "block";
 
-        bgMusic.volume = 0.4;
+        bgMusic.volume = 0.15;
         bgMusic.play().catch(()=>{});
     });
 
