@@ -146,6 +146,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         gameArea.appendChild(obj);
 
+        // 🔥 AUTODESTRUCCIÓN DE SEGURIDAD
+        const safetyKill = setTimeout(() => {
+            if(document.body.contains(obj)) obj.remove();
+        }, 8000);
+
         let position = 0;
         let speed;
 
@@ -232,7 +237,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    /* =========================
+       EFECTO DAÑO
+    ========================= */
 
+    function damageFlash(){
+        gameContainer.classList.add("combo-flash");
+        setTimeout(() => {
+            gameContainer.classList.remove("combo-flash");
+        }, 120);
+    }
 
     /* =========================
        NIVEL COMPLETADO
