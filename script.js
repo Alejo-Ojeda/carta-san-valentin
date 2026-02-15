@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 300);
 
         // 🔥 MÚSICA EMPIEZA AQUÍ
-        bgMusic.volume = 0.4;
+        bgMusic.volume = 0.15;
         bgMusic.play().catch(()=>{});
 
         gameRunning = true;
