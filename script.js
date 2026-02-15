@@ -31,6 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const startScreen = document.getElementById("start-screen");
     const startBtn = document.getElementById("start-btn");
 
+    const MUSIC_VOLUME = 0.15;
+
     /* =========================
        VARIABLES JUEGO
     ========================= */
@@ -72,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 300);
 
         // 🔥 MÚSICA EMPIEZA AQUÍ
-        bgMusic.volume = 0.15;
+        bgMusic.volume = MUSIC_VOLUME;
         bgMusic.play().catch(()=>{});
 
         gameRunning = true;
@@ -354,7 +356,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("final-claim-btn").addEventListener("click", () => {
             gameContainer.style.display = "none";
             envelope.style.display = "block";
-            bgMusic.volume = 0.4;
+            bgMusic.volume = MUSIC_VOLUME;
             bgMusic.play().catch(()=>{});
         });
     }
@@ -456,7 +458,7 @@ document.addEventListener("DOMContentLoaded", () => {
         gameContainer.style.display = "none";
         envelope.style.display = "block";
 
-        bgMusic.volume = 0.15;
+        bgMusic.volume = MUSIC_VOLUME;
         bgMusic.play().catch(()=>{});
     });
 
@@ -471,7 +473,7 @@ document.addEventListener("DOMContentLoaded", () => {
         envelope.style.display = "none";
         letterContainer.style.display = "grid";
 
-        bgMusic.volume = 0.4;
+        bgMusic.volume = MUSIC_VOLUME;
         bgMusic.play().catch(()=>{});
 
         setTimeout(() => {
@@ -654,8 +656,8 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(createHeart, 175);
 
     /* =========================
-   CURSOR NEÓN ROSADO
-========================= */
+       CURSOR NEÓN ROSADO
+     ========================= */
 
     const cursor = document.createElement("div");
     cursor.classList.add("neon-cursor");
